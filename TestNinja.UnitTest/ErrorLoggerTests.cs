@@ -20,5 +20,17 @@ namespace TestNinja.UnitTest
             Assert.That(logger.LastError, Is.EqualTo("a"));
 
         }
+
+        [Test]
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase(" ")]
+        public void Log_InvalidError_ThrowArgumentNullException(string error)
+        {
+            var logger = new ErrorLogger(); 
+            //logger.Log(error); this will throw error need a delegate 
+
+            Assert.That(()=> logger.Log(error), Throws.ArgumentNullException);
+        }
     }
 }
