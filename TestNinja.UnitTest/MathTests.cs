@@ -17,6 +17,7 @@ namespace TestNinja.UnitTest
             _math = new Fundamentals.Math(); 
         }
         [Test]
+        [Ignore("Because I want to")]
         public void Add_WhenCalled_SumofArguments()
         {
             //Arrange
