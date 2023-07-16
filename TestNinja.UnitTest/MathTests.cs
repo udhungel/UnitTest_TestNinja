@@ -43,6 +43,24 @@ namespace TestNinja.UnitTest
             var result = _math.Max(a, b);
 
             Assert.AreEqual(expectedResult, result);
-        }      
+        }
+
+        [Test]
+        public void GetOddNumbers_LimitIsGreaterThanZero_ReturnOddNumberUotoLimit()
+        {
+            var result = _math.GetOddNumbers(5);
+
+            ////assertion logic, how did i get to line 58 logic
+            //Assert.That(result, Does.Contain(1));
+            //Assert.That(result, Does.Contain(3));
+            //Assert.That(result, Does.Contain(5));
+
+            Assert.That(result, Is.EquivalentTo(new[] { 1, 3, 5 }));
+
+            Assert.That(result, Is.Ordered);
+            Assert.That(result, Is.Unique);
+
+
+        }
     }
 }
