@@ -7,6 +7,15 @@ namespace TestNinja.UnitTest
     [TestFixture]
     public class MathTests
     {
+        private Fundamentals.Math _math;
+        //Setup
+        //TearDown
+
+        [SetUp]
+        public void Setup() 
+        {
+            _math = new Fundamentals.Math(); 
+        }
         [Test]
         public void Add_WhenCalled_SumofArguments()
         {
@@ -19,35 +28,20 @@ namespace TestNinja.UnitTest
 
             Assert.AreEqual(3, result);
         }
-        [Test]
-        public void Max_FirstArgumentIsGreater_ReturnTheFirstArgument()
-        {
-            Fundamentals.Math mathTest = new Fundamentals.Math();
-
-            var result = mathTest.Max(2, 1);
-
-            Assert.AreEqual(2, result);
-        }
 
         [Test]
-        public void Max_SecondArgumentIsGreater_ReturnTheSecondArgument()
+        [TestCase(2,1,2)]
+        [TestCase(1, 2, 2)]
+        [TestCase(1, 1, 1)]
+
+        public void Max_WhenCalled_ReturnGreaterArgument(int a, int b, int expectedResult)
         {
-            Fundamentals.Math mathTest = new Fundamentals.Math();
+            //Arrange
+            //Add
+            //Assert            
+            var result = _math.Max(a, b);
 
-            var result = mathTest.Max(1, 2);
-
-            Assert.AreEqual(2, result);
-
-        }
-
-        [Test]
-        public void Max_ArgumentAreEqual_ReturnTheSameArgument()
-        {
-            Fundamentals.Math mathTest = new Fundamentals.Math();
-
-            var result = mathTest.Max(1, 1);
-
-            Assert.AreEqual(1, result);
-        }
+            Assert.AreEqual(expectedResult, result);
+        }      
     }
 }
