@@ -1,11 +1,14 @@
 ﻿
 using System;
+using System.ComponentModel;
 
 namespace TestNinja.Fundamentals
 {
     public class ErrorLogger
     {
         public string LastError { get; set; }
+
+        private Guid _errorId;
 
         public event EventHandler<Guid> ErrorLogged; 
         
@@ -18,8 +21,13 @@ namespace TestNinja.Fundamentals
             
             // Write the log to a storage
             // ...
-
-            ErrorLogged?.Invoke(this, Guid.NewGuid());
+            _errorId = Guid.NewGuid();
+            OnErrorLogged(_errorId);
         }
+      
+      protected virtual void OnErrorLogged(Guid errorId) 
+      {
+            ErrorLogged?.Invoke(this, errorId);
+      }
     }
 }
